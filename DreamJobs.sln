@@ -2,11 +2,11 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DreamJobs.Account", "DreamJobs.Account", "{90070E61-61A9-4091-BC0C-9451E2C1DE5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamJobs.Account.Core", "DreamJobs.Account.Core\DreamJobs.Account.Core.csproj", "{32C34BF1-BAC9-4D8D-9383-3BC447BED1D7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamJobs.Account.BL", "DreamJobs.Account.BL\DreamJobs.Account.BL.csproj", "{08A67B3D-30C4-4F8E-A16A-679933FB4960}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamJobs.Account.API", "DreamJobs.Account.API\DreamJobs.Account.API.csproj", "{B098F321-418B-414C-B5AD-912BEA078BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamJobs.Account.Core", "DreamJobs.Account.Core\DreamJobs.Account.Core.csproj", "{FD654B96-3FC3-4BA6-B64A-FA5DBD43ECBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamJobs.Account.BL", "DreamJobs.Account.BL\DreamJobs.Account.BL.csproj", "{A7C3DEDF-8AA9-4B94-86D0-7B92C18FF696}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,22 +14,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{32C34BF1-BAC9-4D8D-9383-3BC447BED1D7} = {90070E61-61A9-4091-BC0C-9451E2C1DE5F}
-		{08A67B3D-30C4-4F8E-A16A-679933FB4960} = {90070E61-61A9-4091-BC0C-9451E2C1DE5F}
 		{B098F321-418B-414C-B5AD-912BEA078BBA} = {90070E61-61A9-4091-BC0C-9451E2C1DE5F}
+		{FD654B96-3FC3-4BA6-B64A-FA5DBD43ECBA} = {90070E61-61A9-4091-BC0C-9451E2C1DE5F}
+		{A7C3DEDF-8AA9-4B94-86D0-7B92C18FF696} = {90070E61-61A9-4091-BC0C-9451E2C1DE5F}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{32C34BF1-BAC9-4D8D-9383-3BC447BED1D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32C34BF1-BAC9-4D8D-9383-3BC447BED1D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32C34BF1-BAC9-4D8D-9383-3BC447BED1D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32C34BF1-BAC9-4D8D-9383-3BC447BED1D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08A67B3D-30C4-4F8E-A16A-679933FB4960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08A67B3D-30C4-4F8E-A16A-679933FB4960}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08A67B3D-30C4-4F8E-A16A-679933FB4960}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08A67B3D-30C4-4F8E-A16A-679933FB4960}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B098F321-418B-414C-B5AD-912BEA078BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B098F321-418B-414C-B5AD-912BEA078BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B098F321-418B-414C-B5AD-912BEA078BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B098F321-418B-414C-B5AD-912BEA078BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD654B96-3FC3-4BA6-B64A-FA5DBD43ECBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD654B96-3FC3-4BA6-B64A-FA5DBD43ECBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD654B96-3FC3-4BA6-B64A-FA5DBD43ECBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD654B96-3FC3-4BA6-B64A-FA5DBD43ECBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C3DEDF-8AA9-4B94-86D0-7B92C18FF696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C3DEDF-8AA9-4B94-86D0-7B92C18FF696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C3DEDF-8AA9-4B94-86D0-7B92C18FF696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C3DEDF-8AA9-4B94-86D0-7B92C18FF696}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
