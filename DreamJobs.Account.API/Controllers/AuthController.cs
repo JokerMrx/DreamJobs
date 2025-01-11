@@ -7,7 +7,8 @@ namespace DreamJobs.Account.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthController(IAuthService authService) : Controller
+public class AuthController(IAuthService authService)
+    : Controller
 {
     private readonly ResponseDto _responseDto = new();
 
@@ -16,12 +17,13 @@ public class AuthController(IAuthService authService) : Controller
     {
         try
         {
-            var token = await authService.Login(loginRequest.Email, loginRequest.Password);
-            _responseDto.Result = token;
+            var resp = await authService.Login(loginRequest.Email, loginRequest.Password);
+            _responseDto.Result = resp;
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex);
+            _responseDto.IsSuccess = false;
             _responseDto.Message = ex.Message;
         }
 
@@ -39,6 +41,7 @@ public class AuthController(IAuthService authService) : Controller
         catch (Exception ex)
         {
             Console.WriteLine(ex);
+            _responseDto.IsSuccess = false;
             _responseDto.Message = ex.Message;
         }
 
@@ -56,6 +59,32 @@ public class AuthController(IAuthService authService) : Controller
         catch (Exception ex)
         {
             Console.WriteLine(ex);
+            _responseDto.IsSuccess = false;
+            _responseDto.Message = ex.Message;
+        }
+
+        return _responseDto;
+    }
+
+    [HttpPost("tokens")]
+    public async Task<ResponseDto> RefreshTokens()
+    {
+        try
+        {
+            var refreshToken = HttpContext.Request.Cookies["RefreshToken"];
+
+            if (string.IsNullOrEmpty(refreshToken))
+            {
+                throw new Exception("Refresh token is empty");
+            }
+
+            var resp = await authService.RefreshTokens(refreshToken);
+            _responseDto.Result = resp;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            _responseDto.IsSuccess = false;
             _responseDto.Message = ex.Message;
         }
 

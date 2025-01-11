@@ -9,5 +9,5 @@ public class UserDto : Base
 
     public bool IsConfirmEmail { get; set; }
     public bool IsActive { get; set; } = true;
-    public RolesEnum RoleEnum { get; set; }
+    public RolesEnum Role { get; set; }
 }

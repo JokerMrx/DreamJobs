@@ -1,7 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using DreamJobs.Account.Domain.Enums;
 using DreamJobs.Account.Infrastructure.Options;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -12,16 +11,14 @@ public class JwtProvider(IOptions<JwtOptions> jwtOptions) : IJwtProvider
 {
     private readonly JwtOptions _jwtOptions = jwtOptions.Value;
 
-    public string GenerateToken(Guid id, string email, RolesEnum roleEnum)
+    public string GenerateToken(IEnumerable<Claim> claims, int expiresInMinutes)
     {
-        Claim[] claims = [new("id", id.ToString()), new("email", email), new("role", roleEnum.ToString())];
-
         var signingCredentials =
             new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.SecretKey)),
                 SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(claims: claims, signingCredentials: signingCredentials,
-            expires: DateTime.UtcNow.AddHours(_jwtOptions.ExpiresHours));
+            expires: DateTime.UtcNow.AddMinutes(expiresInMinutes));
 
         var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
 

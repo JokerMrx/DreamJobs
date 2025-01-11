@@ -1,10 +1,10 @@
-using DreamJobs.Account.Domain.Enums;
+using System.Security.Claims;
 
 namespace DreamJobs.Account.Infrastructure.Providers;
 
 public interface IJwtProvider
 {
-    public string GenerateToken(Guid id, string email, RolesEnum rolesEnum);
+    public string GenerateToken(IEnumerable<Claim> claims, int expiresIn);
     public bool IsValidateToken(string token);
     public Tuple<Guid, string> DecodeToken(string token);
 }

@@ -30,14 +30,22 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<JwtOptions>(options =>
 {
     options.SecretKey = Environment.GetEnvironmentVariable("JWT_SECRET_KEY") ?? string.Empty;
-    options.ExpiresHours = int.TryParse(Environment.GetEnvironmentVariable("JWT_EXPIRES_HOURS"), out var hours)
-        ? hours
-        : 12;
+    options.AccessTokenExpiresInMinutes =
+        int.TryParse(Environment.GetEnvironmentVariable("ACCESS_TOKEN_EXPIRESIN_MINUTES"),
+            out var accessTokenExpiresInMinutes)
+            ? accessTokenExpiresInMinutes
+            : Token.AccessTokenExpirationMinutes;
+    options.RefreshTokenExpiresInMinutes =
+        int.TryParse(Environment.GetEnvironmentVariable("REFRESH_TOKEN_EXPIRESIN_MINUTES"),
+            out var refreshTokenExpiresInMinutes)
+            ? refreshTokenExpiresInMinutes
+            : Token.RefreshTokenExpirationMinutes;
 });
 
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<AppDbContext>(options => { options.UseNpgsql(Database.DatabaseUrl); });
+builder.Services.AddSingleton<JwtOptions>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
