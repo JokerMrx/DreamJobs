@@ -1,11 +1,13 @@
 using DreamJobs.Account.API.Constants;
-using DreamJobs.Account.BL.Configs;
-using DreamJobs.Account.BL.Context;
-using DreamJobs.Account.BL.Options;
-using DreamJobs.Account.BL.Providers;
-using DreamJobs.Account.BL.Repositories;
-using DreamJobs.Account.BL.Utils;
-using DreamJobs.Account.Core.Repositories;
+using DreamJobs.Account.Application.Interfaces.Services;
+using DreamJobs.Account.Domain.Interfaces.Repositories;
+using DreamJobs.Account.Infrastructure.Configs;
+using DreamJobs.Account.Infrastructure.Context;
+using DreamJobs.Account.Infrastructure.Options;
+using DreamJobs.Account.Infrastructure.Providers;
+using DreamJobs.Account.Infrastructure.Repositories;
+using DreamJobs.Account.Infrastructure.Services;
+using DreamJobs.Account.Infrastructure.Utils;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -42,7 +44,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployerRepository, EmployerRepository>();
 builder.Services.AddScoped<IEmployeeProfileRepository, EmployeeProfileRepository>();
-builder.Services.AddScoped<IAuthRepository, AuthRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 

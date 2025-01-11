@@ -1,4 +1,4 @@
-using DreamJobs.Account.Core.Models.DTOs;
+using DreamJobs.Account.Application.DTOs;
 
 namespace DreamJobs.Account.API.Contracts.Auth;
 

@@ -1,5 +1,5 @@
-using DreamJobs.Account.BL.Providers;
-using DreamJobs.Account.Core.Repositories;
+using DreamJobs.Account.Domain.Interfaces.Repositories;
+using DreamJobs.Account.Infrastructure.Providers;
 
 namespace DreamJobs.Account.API.Middlewares;
 

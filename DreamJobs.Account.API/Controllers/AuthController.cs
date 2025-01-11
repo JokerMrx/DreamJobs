@@ -1,13 +1,13 @@
 using DreamJobs.Account.API.Contracts.Auth;
-using DreamJobs.Account.Core.Models.DTOs;
-using DreamJobs.Account.Core.Repositories;
+using DreamJobs.Account.Application.DTOs;
+using DreamJobs.Account.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DreamJobs.Account.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthController(IAuthRepository authRepository) : Controller
+public class AuthController(IAuthService authService) : Controller
 {
     private readonly ResponseDto _responseDto = new();
 
@@ -16,7 +16,7 @@ public class AuthController(IAuthRepository authRepository) : Controller
     {
         try
         {
-            var token = await authRepository.Login(loginRequest.Email, loginRequest.Password);
+            var token = await authService.Login(loginRequest.Email, loginRequest.Password);
             _responseDto.Result = token;
         }
         catch (Exception ex)
@@ -33,7 +33,7 @@ public class AuthController(IAuthRepository authRepository) : Controller
     {
         try
         {
-            var token = await authRepository.EmployeeRegister(employeeRegisterRequest);
+            var token = await authService.EmployeeRegister(employeeRegisterRequest);
             _responseDto.Result = token;
         }
         catch (Exception ex)
@@ -50,7 +50,7 @@ public class AuthController(IAuthRepository authRepository) : Controller
     {
         try
         {
-            var token = await authRepository.EmployerRegister(employerRegisterRequest);
+            var token = await authService.EmployerRegister(employerRegisterRequest);
             _responseDto.Result = token;
         }
         catch (Exception ex)

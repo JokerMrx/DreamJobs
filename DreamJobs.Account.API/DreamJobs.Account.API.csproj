@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DreamJobs.Account.BL\DreamJobs.Account.BL.csproj" />
+      <ProjectReference Include="..\DreamJobs.Account.Infrastructure\DreamJobs.Account.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
