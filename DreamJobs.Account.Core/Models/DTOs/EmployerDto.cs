@@ -8,4 +8,12 @@ public class EmployerDto : Base
     public string? LogoUrl { get; set; }
     public string? WebsiteUrl { get; set; }
     public required Guid  UserId { get; set; }
+
+    public EmployerDto(EmployerRegisterDto employerRegisterDto, User user)
+    {
+        Id = Guid.NewGuid();
+        Name = employerRegisterDto.Name;
+        CreatedAt = DateTime.UtcNow;
+        UserId = user.Id;
+    }
 }

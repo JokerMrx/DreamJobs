@@ -46,13 +46,11 @@ public class AuthRepository(
             Id = Guid.NewGuid(), Email = employeeRegisterDto.Email, Role = Roles.Employee, PasswordHash = passwordHash
         };
         var createdUser = await userRepository.CreateAsync(user);
-        var employeeDto = new EmployeeDto()
+        var employeeDto = new EmployeeDto(employeeRegisterDto, createdUser)
         {
-            Id = Guid.NewGuid(),
             FirstName = employeeRegisterDto.FirstName,
             LastName = employeeRegisterDto.LastName,
             Email = employeeRegisterDto.Email,
-            CreatedAt = DateTime.UtcNow,
             UserId = createdUser.Id,
         };
         await employeeRepository.CreateAsync(employeeDto);
@@ -69,11 +67,9 @@ public class AuthRepository(
             Id = Guid.NewGuid(), Email = employerRegisterDto.Email, Role = Roles.Employer, PasswordHash = passwordHash, CreatedAt = DateTime.UtcNow
         };
         var createdUser = await userRepository.CreateAsync(user);
-        var employerDto = new EmployerDto()
+        var employerDto = new EmployerDto(employerRegisterDto, createdUser)
         {
-            Id = Guid.NewGuid(),
             Name = employerRegisterDto.Name,
-            CreatedAt = DateTime.UtcNow,
             UserId = createdUser.Id,
         };
         await employerRepository.CreateAsync(employerDto);

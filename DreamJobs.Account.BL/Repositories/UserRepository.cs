@@ -10,7 +10,7 @@ public class UserRepository(AppDbContext appDbContext, IPasswordHasher passwordH
 {
     public async Task<User> CreateAsync(User entity)
     {
-        var candidate = await appDbContext.Users.FirstOrDefaultAsync(c => c.Email == entity.Email);
+        var candidate = await GetByEmailAsync(entity.Email);
 
         if (candidate != null)
         {
